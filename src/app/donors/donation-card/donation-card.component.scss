@@ -1,0 +1,7 @@
+.donation-card {
+  width: 300px;
+
+  &.seen {
+    background-color: lightgreen;
+  }
+}

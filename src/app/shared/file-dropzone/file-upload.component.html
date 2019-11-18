@@ -1,0 +1,23 @@
+<div class="file-dropzone">
+  <div class="file-dropzone-area"
+       fileDropzone
+       (hovered)="toggleHover($event)"
+       (dropped)="setSelectedFile($event)"
+       [class.hovering]="isHovering">
+
+    <h3>File Dropzone</h3>
+    <p>Drag and Drop a File</p>
+
+    <div class="file">
+      <label class="file-label">
+        <input type="file" (change)="setSelectedFile($event.target.files)" [hidden]="true">
+
+        <span class="choose-file">Choose a file...</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="file-dropzone-preview" *ngIf="selectedFileDataUrl">
+    <img [src]="selectedFileDataUrl" [style.width.px]="100" [style.height.px]="100" alt="">
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.donation-form {
+  max-width: 500px;
+
+  > form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  ::ng-deep {
+    mat-form-field {
+      flex: 1 1 45%;
+      margin-right: 10px;
+
+      &.full-field {
+        flex: 1 1 100%;
+      }
+    }
+  }
+}

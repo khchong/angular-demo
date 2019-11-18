@@ -1,0 +1,38 @@
+.file-dropzone {
+  display: flex;
+  align-items: center;
+
+  &-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 150px;
+    height: 150px;
+    border: 2px dashed orange;
+    border-radius: 5px;
+    background: grey;
+    margin: 10px 0;
+
+    &.hovering {
+      border: 2px solid orange;
+      color: white !important;
+      opacity: 0.8;
+    }
+
+    .file-label {
+      font-size: 1.2em;
+    }
+  }
+
+  &-preview {
+    margin: 0 10px;
+  }
+}
+
+.choose-file {
+  font-size: 12px;
+  padding: 4px;
+  background-color: lightgray;
+  border: 1px solid white;
+}

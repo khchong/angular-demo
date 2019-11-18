@@ -1,0 +1,33 @@
+<div class="donation-list">
+  <p>
+    <a class="make-donation-link" routerLink="/donation">Make a donation</a>
+  </p>
+
+  <ng-container *ngIf="donationStore.donations$ | async as donations">
+
+    <div *ngIf="!donations.length">
+      No Donations :(
+    </div>
+
+    <div *ngIf="donations.length">
+      <div *ngFor="let donation of donations">
+        <app-donation-card [donation]="donation" (delete)="deleteDonation($event)">
+          <div>I am content provided by donation-list component!</div>
+        </app-donation-card>
+      </div>
+    </div>
+
+  </ng-container>
+</div>
+
+<div>
+  <button type="button" (click)="getRandomUser()">Get Random User</button>
+
+  <ng-container *ngIf="initialized">
+    <pre *ngIf="randomUser$ | async as user; else loadingUser">{{ user | json }}</pre>
+
+    <ng-template #loadingUser>
+      <mat-spinner [style.margin.px]="10" [diameter]="30"></mat-spinner>
+    </ng-template>
+  </ng-container>
+</div>

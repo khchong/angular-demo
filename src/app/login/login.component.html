@@ -1,0 +1,19 @@
+<div class="login-component">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="cl-form-error login-error" *ngIf="loginError">{{ loginError }}</div>
+
+    <div class="cl-form-field">
+      <label for="email">Email: </label>
+      <input id="email" [formControl]="email">
+    </div>
+
+    <div class="cl-form-field">
+      <label for="password">Password: </label>
+      <input id="password" type="password" [formControl]="password">
+    </div>
+
+    <app-file-upload [onlyImages]="true" (fileSelected)="onFileSelected($event)"></app-file-upload>
+
+    <button class="login-button" [disabled]="loginInProgress">Login</button>
+  </form>
+</div>

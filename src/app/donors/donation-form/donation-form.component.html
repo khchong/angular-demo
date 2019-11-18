@@ -1,0 +1,52 @@
+<div class="donation-form">
+  <form [formGroup]="donationForm" (ngSubmit)="saveDonation()">
+    <mat-form-field appearance="outline">
+      <mat-label for="firstName">First Name</mat-label>
+      <input matInput id="firstName" [formControl]="firstName" required>
+
+      <mat-error *ngIf="firstName.dirty || firstName.touched && firstName.hasError('required')">This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label for="lastName">Last Name</mat-label>
+      <input matInput id="lastName" [formControl]="lastName" required>
+
+      <mat-error *ngIf="lastName.dirty || lastName.touched && lastName.hasError('required')">This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-field">
+      <mat-label for="email">Email</mat-label>
+      <input matInput id="email" [formControl]="email" required>
+
+      <mat-error *ngIf="email.dirty || email.touched && email.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="email.hasError('email')">Invalid email</mat-error>
+    </mat-form-field>
+
+    <app-address [parentForm]="address"></app-address>
+
+    <mat-form-field appearance="outline">
+      <mat-label for="amount">Amount</mat-label>
+      <input matInput id="amount" [formControl]="amount" required>
+
+      <mat-error *ngIf="amount.dirty && amount.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="amount.dirty && amount.hasError('pattern')">Must be a valid number</mat-error>
+      <mat-error *ngIf="amount.dirty && amount.hasError('min')">Must donate at least $1</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label for="currency">Currency</mat-label>
+      <mat-select id="currency" [formControl]="currency">
+        <mat-option value="USD">($) USD</mat-option>
+        <mat-option value="CAD">(C$) CAD</mat-option>
+        <mat-option value="JPY">(¥) Yen</mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="currency.dirty && currency.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="currency.dirty && currency.hasError('invalidCurrency')">This currency is not supported</mat-error>
+    </mat-form-field>
+
+    <div>
+      <button mat-raised-button color="primary" [disabled]="donationForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>

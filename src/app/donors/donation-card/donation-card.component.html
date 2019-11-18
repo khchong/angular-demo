@@ -1,0 +1,23 @@
+<!-- [class] portion only needed for testing e2e. Can be done a different way -->
+<mat-card class="donation-card"
+     [class]="'donation-card__' + donation.firstName"
+     [ngClass]="{ 'seen': donation.seen }">
+  <div>{{ donation.id }}</div>
+  <div>{{ donation.firstName }}</div>
+  <div>{{ donation.lastName }}</div>
+  <div>{{ donation.email }}</div>
+  <div>{{ donation.address?.address }}</div>
+  <div>{{ donation.address?.address2 }}</div>
+  <div>{{ donation.address?.city }}</div>
+  <div>{{ donation.address?.zipcode }}</div>
+  <div [style.color]="'green'">
+    {{ donation.amount | currency:donation.currency }}
+  </div>
+  <!-- This is dom content provided by the parent component that this component -->
+  <ng-content></ng-content>
+
+  <mat-card-actions>
+    <button mat-button color="warn" class="delete-button" type="button" (click)="deleteClicked(donation.id)">Delete</button>
+    <button *ngIf="!donation.seen" mat-button class="seen-button" type="button" (click)="seenClicked()">Seen</button>
+  </mat-card-actions>
+</mat-card>

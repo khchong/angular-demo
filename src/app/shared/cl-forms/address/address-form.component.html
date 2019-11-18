@@ -1,0 +1,25 @@
+<div class="address-form" [formGroup]="parentForm">
+  <mat-form-field appearance="outline" class="full-field">
+    <mat-label for="address">Address</mat-label>
+    <input matInput id="address" [formControl]="address">
+    <mat-error *ngIf="address.dirty && address.hasError('required')">This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-field">
+    <mat-label for="address2">Address 2</mat-label>
+    <input matInput id="address2" [formControl]="address2">
+    <mat-error *ngIf="address2.dirty && address2.hasError('required')">This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label for="city">City</mat-label>
+    <input matInput id="city" [formControl]="city">
+    <mat-error *ngIf="city.dirty && city.hasError('required')">This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label for="zipcode">Zipcode</mat-label>
+    <input matInput id="zipcode" [formControl]="zipcode">
+    <mat-error *ngIf="zipcode.dirty && zipcode.touched && zipcode.hasError('pattern')">Must be a valid zip code</mat-error>
+  </mat-form-field>
+</div>

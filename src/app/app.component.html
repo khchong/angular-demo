@@ -1,0 +1,24 @@
+<header>
+  <ng-container *ngIf="(authService.session$ | async) as session; else notLoggedIn">
+    <div class="logged-in-header">
+
+      <ng-container *ngIf="session.avatarImg">
+        <img [src]="session.avatarImg" alt="" [style.width.px]="50" [style.height.px]="50">
+      </ng-container>
+
+      <div class="logged-in-user">Logged in as: {{session.email}}</div>
+      <button class="logout-button" type="button" (click)="authService.logout()">Logout</button>
+    </div>
+
+    <a routerLink="/donation-list">Donation List</a>
+    <a routerLink="/admin">Admin</a>
+  </ng-container>
+
+  <ng-template #notLoggedIn>
+    <div>Not Logged In</div>
+  </ng-template>
+</header>
+
+<div class="shell">
+  <router-outlet></router-outlet>
+</div>

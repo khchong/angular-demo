@@ -1,0 +1,30 @@
+header {
+  background: lightgrey;
+  padding: 8px;
+
+  a {
+    margin-right: 10px;
+  }
+}
+
+.logged-in {
+  &-header {
+    display: flex;
+    align-items: center;
+
+    .logout-button {
+      height: 30px;
+      margin: 0 5px;
+    }
+  }
+
+  &-user {
+    display: flex;
+    justify-content: center;
+    padding-right: 5px;
+  }
+}
+
+.shell {
+  padding: 8px;
+}
